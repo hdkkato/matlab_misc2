@@ -1,0 +1,97 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>wave</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-04-16"><meta name="DC.source" content="wave.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+
+  </style></head><body><div class="content"><pre class="codeinput">clear
+clf
+fsample = 44100;<span class="comment">%[Hz] &#12469;&#12531;&#12503;&#12522;&#12531;&#12464;&#21608;&#27874;&#25968;</span>
+delt = 1/fsample;<span class="comment">%[s] &#21336;&#20301;&#26178;&#38291;</span>
+f = 1;<span class="comment">%[Hz] &#21608;&#27874;&#25968;</span>
+a = 1;<span class="comment">%[Pa] &#25391;&#24133;</span>
+i = 0:1:5*fsample;<span class="comment">%&#12505;&#12463;&#12488;&#12523;&#12398;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;</span>
+t = i*delt;<span class="comment">%&#26178;&#21051;</span>
+<span class="comment">% &#30697;&#24418;&#27874; F1</span>
+F1 = a*((mod(i,fsample/f)&lt;=1/2*fsample/f).*1 + (mod(i,fsample/f)&gt;1/2*fsample/f).*(-1));
+<span class="comment">%&#19977;&#35282;&#27874; F2</span>
+F2 = a*((mod(i,fsample/f)&lt;=1/4*fsample/f).*(mod(i,fsample/f)/(1/4*fsample/f))<span class="keyword">...</span>
++ (1/4*fsample/f&lt;mod(i,fsample/f) &amp; mod(i,fsample/f)&lt;=3/4*fsample/f).*(2-mod(i,fsample/f)/(1/4*fsample/f))<span class="keyword">...</span>
++ (3/4*fsample/f&lt;mod(i,fsample/f)).*(-4+mod(i,fsample/f)/(1/4*fsample/f)));
+<span class="comment">%&#12494;&#12467;&#12462;&#12522;&#27874; F3</span>
+F3 = a*(1-mod(i,fsample/f)/(1/2*fsample/f));
+plot(t,F1,t,F2,t,F3)
+</pre><img vspace="5" hspace="5" src="wave_01.png" alt=""> <p class="footer"><br>
+      Published with MATLAB&reg; 7.14<br></p></div><!--
+##### SOURCE BEGIN #####
+clear
+clf
+fsample = 44100;%[Hz] サンプリング周波数
+delt = 1/fsample;%[s] 単位時間
+f = 1;%[Hz] 周波数
+a = 1;%[Pa] 振幅
+i = 0:1:5*fsample;%ベクトルのインデックス
+t = i*delt;%時刻
+% 矩形波 F1
+F1 = a*((mod(i,fsample/f)<=1/2*fsample/f).*1 + (mod(i,fsample/f)>1/2*fsample/f).*(-1));
+%三角波 F2
+F2 = a*((mod(i,fsample/f)<=1/4*fsample/f).*(mod(i,fsample/f)/(1/4*fsample/f))...
++ (1/4*fsample/f<mod(i,fsample/f) & mod(i,fsample/f)<=3/4*fsample/f).*(2-mod(i,fsample/f)/(1/4*fsample/f))...
++ (3/4*fsample/f<mod(i,fsample/f)).*(-4+mod(i,fsample/f)/(1/4*fsample/f)));
+%ノコギリ波 F3
+F3 = a*(1-mod(i,fsample/f)/(1/2*fsample/f));
+plot(t,F1,t,F2,t,F3)
+
+##### SOURCE END #####
+--></body></html>

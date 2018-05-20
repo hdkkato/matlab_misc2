@@ -1,0 +1,368 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" itemscope itemtype="http://www.mathworks.com/help/schema/MathWorksDocPage">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>構造化されたデータを表すクラス</title>
+<link rel="stylesheet" href="example--representing-structured-data_ja_JP_files/docstyle.css" type="text/css"><link rel="stylesheet" href="example--representing-structured-data_ja_JP_files/docstyle_ja_JP.css" type="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="toctype" itemprop="pagetype" content="ug">
+<meta name="infotype" itemprop="infotype" content="ex" />
+
+<meta name="description" itemprop="description" content="オブジェクトは、より効果的なデータ構造です。" />
+<script type="text/javascript" src="example--representing-structured-data_ja_JP_files/jquery-latest.js"></script>
+<script type="text/javascript" src="example--representing-structured-data_ja_JP_files/docscripts.js"></script>
+<script type="text/javascript" src="example--representing-structured-data_ja_JP_files/mw.toc.js"></script>
+<script type="text/javascript" src="example--representing-structured-data_ja_JP_files/mw.imagescaling.js"></script>
+<script type="text/javascript" src="example--representing-structured-data_ja_JP_files/mw.imageanimation.js"></script>
+<script type="text/javascript" src="example--representing-structured-data_ja_JP_files/mw.breadcrumb.js"></script>
+<script type="text/javascript" src="example--representing-structured-data_ja_JP_files/jquery.highlight.js"></script>
+
+
+
+
+<script type="text/javascript" src="example--representing-structured-data_ja_JP_files/jquery.tmpl.js"></script>
+<script type="text/javascript" src="example--representing-structured-data_ja_JP_files/jquery.tmpl.min.js"></script>
+<script type="text/javascript" src="example--representing-structured-data_ja_JP_files/jquery.toggleval.js"></script>
+<script type="text/javascript" src="example--representing-structured-data_ja_JP_files/localnav.js"></script>
+<script type="text/javascript" src="example--representing-structured-data_ja_JP_files/suggest.js"></script>
+<script type="text/javascript">
+            var suggestionsObj;
+            $(function() {
+                var searchField = $('#docsearch');
+                suggestionsObj = new Suggestions(getSuggestions, getMore, searchField);
+            });
+        
+            function getSuggestions() {
+               var text = suggestionsObj.searchField.val();
+               document.location='docsuggestion:' + text;
+            }
+
+            function getMore(type) {
+                var text = suggestionsObj.searchField.val();
+                document.location='docsuggestion:' + type + ':' + text;
+            }
+        </script>
+
+<link href="example--representing-structured-data_ja_JP_files/ice_reset.css" rel="stylesheet" type="text/css">
+<link href="example--representing-structured-data_ja_JP_files/ice_960.css" rel="stylesheet" type="text/css">
+<link href="example--representing-structured-data_ja_JP_files/ice_site5.css" rel="stylesheet" type="text/css">
+<link href="example--representing-structured-data_ja_JP_files/ice_doc_center.css" rel="stylesheet" type="text/css">
+<link href="example--representing-structured-data_ja_JP_files/ice_doc_center_installed.css" rel="stylesheet" type="text/css">
+<link href="example--representing-structured-data_ja_JP_files/ice_doc_center_print.css" rel="stylesheet" type="text/css" media="print">
+<script type="text/javascript">
+             if (navigator.appName != "ICEbrowser") {
+                 var cssStyleSheets = $("link").filter(function(){
+                     var href = $(this).attr('href');
+                     return $(this).attr('href') != "example--representing-structured-data_ja_JP_files/docstyle.css"});
+                 var hrefElements = $.map(cssStyleSheets, function(elem) {
+                     var href = $(elem).attr('href');
+                     var hrefArray = href.split("/");
+                     hrefArray[hrefArray.length - 1] = hrefArray[hrefArray.length - 1].replace("ice_", "");
+                     return {
+                         href: hrefArray.join("/"),
+                         media: $(elem).attr('media')
+                     };
+                 });
+                 cssStyleSheets.remove();
+                 for (var i = 0; i < hrefElements.length; i++) {
+                     if ($.browser.msie && $.browser.version <= 8) {
+                        var ieStyleSheet = document.createStyleSheet(hrefElements[i].href);
+                        if (hrefElements[i].media) {
+                            ieStyleSheet.media = hrefElements[i].media;
+                        }
+                     } else {
+                        var link = $('<link rel="stylesheet" href=' + hrefElements[i].href + ' type="text/css" />');
+                        if (hrefElements[i].media) {
+                          link.attr('media', hrefElements[i].media);
+                        }
+                        $('head').append(link);
+                     }
+                 }
+             }
+        </script></head>
+<body>
+
+         <div class="site_container site_toc_closed">
+         <div class="toc_pane"><div xmlns:atict="http://www.arbortext.com/namespace/atict" class="toc_pane">&nbsp;
+<div class="toc_container_wrapper" tabindex="0" style="display:block;">
+<div class="toc_header">
+<div class="toc_icon" id="toc.matlab">
+<a href="../doccentertoc_ja_JP.html"></a>
+</div>
+<h3>Contents</h3>
+</div><!--close_toc_header-->
+<div class="toc_container">
+<!--BEGINNING OF TOC DATA-->
+<div class="toc_doc_center_home">
+<a href="../../documentation-center.html">ドキュメンテーション センター</a>
+</div>
+<ul>
+<li id="matlab.index_ja_JP.html" class="toc_collapsed"><div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../index.html" class="corrected_url">MATLAB</a></div>
+</div>
+<ul>
+<li id="matlab.getting-started-with-matlab_ja_JP.html.0" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../getting-started-with-matlab.html" class="corrected_url">MATLAB のご利用の前に</a></div>
+</div>
+</li><li id="matlab.examples.index.html"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper"><a href="../examples/index.html" class="corrected_url">例</a></div></div></li><li id="matlab.release-notes_ja_JP.html">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper">
+<a href="../release-notes.html" class="corrected_url">リリース ノート</a></div>
+</div>
+</li>
+<li id="matlab.functionlist.html"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper"><a href="../functionlist.html" class="corrected_url">MATLAB 関数</a></div></div></li><li id="matlab.index_ja_JP.html.1" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../index.html#language-fundamentals" class="corrected_url">言語の基礎</a></div>
+</div>
+</li><li id="matlab.index_ja_JP.html.2" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../index.html#mathematics" class="corrected_url">数学</a></div>
+</div>
+</li><li id="matlab.index_ja_JP.html.3" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../index.html#graphics" class="corrected_url">グラフィックス</a></div>
+</div>
+</li><li id="matlab.index_ja_JP.html.4" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../index.html#programming-and-data-types" class="corrected_url">スクリプトと関数のプログラミング</a></div>
+</div>
+</li><li id="matlab.index_ja_JP.html.5" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../index.html#data-and-file-management" class="corrected_url">データとファイルの管理</a></div>
+</div>
+</li><li id="matlab.index_ja_JP.html.6" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../index.html#gui-development" class="corrected_url">GUI 構築</a></div>
+</div>
+</li><li id="matlab.index_ja_JP.html.7" class="toc_expanded">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../index.html#external-interfaces" class="corrected_url">高度なソフトウェア開発</a></div>
+</div>
+<ul>
+<li id="matlab.object-oriented-programming_ja_JP.html.0" class="toc_expanded">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../object-oriented-programming.html" class="corrected_url">オブジェクト指向プログラミング</a></div>
+</div>
+<ul>
+<li id="matlab.object-oriented-design-with-matlab_ja_JP.html.0" class="toc_expanded">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../object-oriented-design-with-matlab.html" class="corrected_url">MATLAB でのオブジェクト指向デザイン</a></div>
+</div>
+<ul>
+<li class="toc_collapsed"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper">例および使用方法</div></div><ul>
+<li id="matlab.matlab_oop.developing-classes--typical-workflow_ja_JP.html"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper"><a href="../../matlab/matlab_oop/developing-classes--typical-workflow.html" class="corrected_url">クラスの開発 — 一般的なワークフロー</a></div></div></li>
+<li id="matlab.matlab_oop.using-objects-to-write-data-to-a-file_ja_JP.html"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper"><a href="../../matlab/matlab_oop/using-objects-to-write-data-to-a-file.html" class="corrected_url">関数でのオブジェクトの取り扱い</a></div></div></li>
+<li id="matlab.matlab_oop.example--representing-structured-data_ja_JP.html" class="current_page"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper"><a href="../../matlab/matlab_oop/example--representing-structured-data.html" class="corrected_url">構造化されたデータを表すクラス</a></div></div></li>
+<li id="matlab.matlab_oop.example--implementing-linked-lists_ja_JP.html"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper"><a href="../../matlab/matlab_oop/example--implementing-linked-lists.html" class="corrected_url">連結リストを実装するクラス</a></div></div></li>
+<li id="matlab.matlab_oop.example--class-for-graphing-functions_ja_JP.html"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper"><a href="../../matlab/matlab_oop/example--class-for-graphing-functions.html" class="corrected_url">グラフ化関数のクラス</a></div></div></li>
+</ul>
+</li>
+<li class="toc_collapsed"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper">概念</div></div><ul>
+<li id="matlab.matlab_oop.why-use-object-oriented-design_ja_JP.html"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper"><a href="../../matlab/matlab_oop/why-use-object-oriented-design.html" class="corrected_url">オブジェクト指向の設計を使用する理由</a></div></div></li>
+<li id="matlab.matlab_oop.classes-in-the-matlab-language_ja_JP.html"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper"><a href="../../matlab/matlab_oop/classes-in-the-matlab-language.html" class="corrected_url">MATLAB 言語のクラス</a></div></div></li>
+<li id="matlab.matlab_oop.matlab-vs-other-oo-languages_ja_JP.html"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper"><a href="../../matlab/matlab_oop/matlab-vs-other-oo-languages.html" class="corrected_url">MATLAB と他のオブジェクト指向言語の比較</a></div></div></li>
+<li id="matlab.matlab_oop.class-diagram-notation_ja_JP.html"><div class="node_element"><div class="wrapper img_wrapper"></div><div class="wrapper text_wrapper"><a href="../../matlab/matlab_oop/class-diagram-notation.html" class="corrected_url">クラス図の表記法</a></div></div></li>
+</ul>
+</li>
+</ul>
+</li><li id="matlab.quick-guide-to-class-syntax_ja_JP.html.1" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../quick-guide-to-class-syntax.html" class="corrected_url">クラス構文の基礎</a></div>
+</div>
+</li><li id="matlab.object-oriented-programming-in-matlab_ja_JP.html.2" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../object-oriented-programming-in-matlab.html" class="corrected_url">MATLAB クラスの定義</a></div>
+</div>
+</li><li id="matlab.get-information-about-classes-and-objects_ja_JP.html.3" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../get-information-about-classes-and-objects.html" class="corrected_url">クラスとオブジェクトについての情報の取得</a></div>
+</div>
+</li></ul>
+</li><li id="matlab.exception-handling_ja_JP.html.1" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../exception-handling.html" class="corrected_url">例外処理</a></div>
+</div>
+</li><li id="matlab.performance-and-memory_ja_JP.html.2" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../performance-and-memory.html" class="corrected_url">パフォーマンスとメモリ</a></div>
+</div>
+</li><li id="matlab.creating-help_ja_JP.html.3" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../creating-help.html" class="corrected_url">カスタム ドキュメンテーション</a></div>
+</div>
+</li><li id="matlab.external-interfaces_ja_JP.html.4" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../external-interfaces.html" class="corrected_url">外部プログラミング言語インターフェイス</a></div>
+</div>
+</li><li id="matlab.source-control_ja_JP.html.5" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../source-control.html" class="corrected_url">ソース管理の統合</a></div>
+</div>
+</li></ul>
+</li><li id="matlab.index_ja_JP.html.8" class="toc_collapsed">
+<div class="node_element">
+<div class="wrapper img_wrapper"></div>
+<div class="wrapper text_wrapper"><a href="../index.html#desktop-tools-and-development-environment" class="corrected_url">デスクトップ環境</a></div>
+</div>
+</li></ul>
+</li>
+</ul>
+<!--END OF TOC DATA-->
+</div><!--close_toc_container-->
+</div><!--close_toc_container_wrapper-->
+</div><!--close_toc_pane-->
+</div><!--close_toc_pane-->
+            <div class="page_container">
+               <div class="content_frame">
+                  <div class="content_container" id="content_container">
+            
+<div class="docsearch_container">
+<form id="docsearch_form" name="docsearch_form" method="get" action="../../templates/searchresults.html">
+<label for="docsearch" class="hidden">MATLAB ドキュメンテーションの検索</label>
+<input type="text" name="qdoc" id="docsearch" class="textfield" autocomplete="off" value="ドキュメンテーションの検索">
+<input type="submit" name="submitsearch" id="submitsearch" value="Search" class="docsearch_submit">
+<script type="text/javascript">
+         $("input[name='qdoc']").toggleVal({
+            focusClass: "hasFocus"
+         });
+       </script>
+</form>
+</div>
+<div class="breadcrumb_container">
+<div class="breadcrumbs"><ul><li itemscope="" itemtype="http://www.data-vocabulary.org/Breadcrumb" itemprop="breadcrumb" class="breadcrumb_first"><a href="../../documentation-center.html" itemprop="url"><span itemprop="title">R2013a</span></a></li><li itemscope="" itemtype="http://www.data-vocabulary.org/Breadcrumb" itemprop="breadcrumb" class="breadcrumb_product"><a href="../index.html" itemprop="url"><span itemprop="title">MATLAB</span></a></li><li itemscope="" itemtype="http://www.data-vocabulary.org/Breadcrumb" itemprop="breadcrumb"><a href="../index.html#external-interfaces" itemprop="url"><span itemprop="title">高度なソフトウェア開発</span></a></li><li itemscope="" itemtype="http://www.data-vocabulary.org/Breadcrumb" itemprop="breadcrumb"><a href="../object-oriented-programming.html" itemprop="url"><span itemprop="title">オブジェクト指向プログラミング</span></a></li><li itemscope="" itemtype="http://www.data-vocabulary.org/Breadcrumb" itemprop="breadcrumb" class="breadcrumb_last"><a href="../object-oriented-design-with-matlab.html" itemprop="url"><span itemprop="title">MATLAB でのオブジェクト指向デザイン</span></a></li>
+</ul>
+</div>
+</div>
+
+<section id="doc_center_content"><p><a href="example--representing-structured-data.html?lang=en" rel="nofollow">このページの最新版は英語でご覧になれます。</a></p>
+<a name="f2-74190"></a><h2 class="title r2012b" itemprop="title content" id="f2-74190">構造化されたデータを表すクラス</h2><table border="0" cellpadding="4" cellspacing="0" class="pagenavtable"><tr><th>項目一覧…</th></tr><tr><td><p><a href="example--representing-structured-data.html#brfyp_u-1" class="intrnllnk">コメント付きコード例</a></p><p><a href="example--representing-structured-data.html#brfypq0" class="intrnllnk">データ構造としてのオブジェクト</a></p><p><a href="example--representing-structured-data.html#f2-84646" class="intrnllnk">データの構造</a></p><p><a href="example--representing-structured-data.html#f2-84553" class="intrnllnk">TensileData クラス</a></p><p><a href="example--representing-structured-data.html#f2-74210" class="intrnllnk">インスタンスの作成とデータの割り当て</a></p><p><a href="example--representing-structured-data.html#f2-74243" class="intrnllnk">プロパティ値の制限</a></p><p><a href="example--representing-structured-data.html#f2-74277" class="intrnllnk">コンストラクターを使用したインターフェイスの単純化</a></p><p><a href="example--representing-structured-data.html#f2-85430" class="intrnllnk">依存関係プロパティの使用</a></p><p><a href="example--representing-structured-data.html#f2-85393" class="intrnllnk">TensileData オブジェクトの表示</a></p><p><a href="example--representing-structured-data.html#f2-74305" class="intrnllnk">応力と歪みをプロットするメソッド</a></p></td></tr></table><div itemprop="content"><a name="brfyp_u-1"></a><h3 class="title" id="brfyp_u-1">コメント付きコード例</h3><p><a href="matlab:helpview([docroot '/matlab/matlab_oop/examples_html/_tensiledata_class.html'],'CSHelpWindow','size',[700 400])" class="execmatlabproduct">ポップアップ ウィンドウにクラス コードを開く</a><a href="rmvd_matlablink__11f08b68940012100071f05033aa5b99_ja_JP.html" class="execmatlabweb">ポップアップ ウィンドウにクラス コードを開く</a> - このリンクを使用すると、このクラスの最終コードと、説明の節へのリンクが表示されます。</p><p><a href="matlab:edit  ([docroot '/techdoc/matlab_oop/examples/@TensileData/TensileData.m']);" class="execmatlabproduct">MATLAB<sup>&#x00AE;</sup> エディターにクラス定義ファイルを開く</a><a href="rmvd_matlablink__b1e14378a8f9465ef61f8655ec7a0ec2_ja_JP.html" class="execmatlabweb">MATLAB エディターにクラス定義ファイルを開く</a>－ このリンクを使用すると、ユーザー バージョンのクラスの保存や修正を行うことができます。</p><p>クラスを使用するには、<tt>@TensileData</tt> というフォルダーを作成して、<tt>TensileData.m</tt> をこのフォルダーに保存します。<tt>@TensileData</tt> の親フォルダーは、MATLAB パス上になければなりません。</p></div><div itemprop="content"><a name="brfypq0"></a><h3 class="title" id="brfypq0">データ構造としてのオブジェクト</h3><p>この例は、特定の構造をもつデータを保存するクラスを定義します。データを保存するためにコンシステントな構造を使用すると、データに作用する関数の作成がより簡単になります。特定のデータ要素を記述するフィールド名をもつ MATLAB <tt>struct</tt> も、データをまとめる便利な方法です。しかし、クラスを使用すると、データ ストレージ (プロパティ) とそのデータに実行できる操作 (メソッド) を定義でき、この例で説明するような利点があります。 </p><a name="brfyqq3"></a><h4 class="title" id="brfyqq3">この例の基になっている概念</h4><p>この例では、データは、さまざまな材料の弾性率の計算に使用される、引張応力/歪みの測定を表します。簡単に言えば、応力は材料に加えられる力であり、歪みはその結果の変形です。それらの比は、材料の特性を特徴付けます。これは、過程を単純化し過ぎですが、この例では十分です。</p></div><div itemprop="content"><a name="f2-84646"></a><h3 class="title" id="f2-84646">データの構造</h3><p>次の表は、データの構造を表します。 </p><table cellspacing="0" class="body" cellpadding="4" border="2"><colgroup><col width="37%"><col width="63%"></colgroup><thead><tr valign="top"><th bgcolor="#B2B2B2"><p>データ</p></th><th bgcolor="#B2B2B2"><p>説明</p></th></tr>
+</thead><tbody><tr valign="top"><td bgcolor="#F2F2F2"><p><tt>Material</tt></p></td><td bgcolor="#F2F2F2"><p>試験する材料の種類を表す文字列</p></td></tr>
+<tr valign="top"><td bgcolor="#F2F2F2"><p><tt>SampleNumber</tt></p></td><td bgcolor="#F2F2F2"><p>特定の試験サンプル数</p></td></tr>
+<tr valign="top"><td bgcolor="#F2F2F2"><p><tt>Stress</tt></p></td><td bgcolor="#F2F2F2"><p>試験中にサンプルに加えられる応力を表す double のベクトル。</p></td></tr>
+<tr valign="top"><td bgcolor="#F2F2F2"><p><tt>Strain</tt></p></td><td bgcolor="#F2F2F2"><p>加えられた応力の値と、そのときの歪みを表す double のベクトル。</p></td></tr>
+<tr valign="top"><td bgcolor="#F2F2F2"><p><tt>Modulus</tt></p></td><td bgcolor="#F2F2F2"><p>応力と歪みのデータから計算される、試験材料の弾性率を double で定義します。</p></td></tr>
+</tbody></table><p></p></div><div itemprop="content"><a name="f2-84553"></a><h3 class="title" id="f2-84553">TensileData クラス</h3><a name="defining_tensiledata_class"></a><p>このクラスは、データを保存するために設計されるので、データの各要素のプロパティを定義します。以下のクラス ブロックは、5 つのプロパティを定義し、それぞれが含むデータ型に従い、プロパティの初期値を指定します。初期値を定義する必要はありませんが、オブジェクト作成中にプロパティ値が割り当てられない場合には、初期値が有効になります。</p><p>この例では、クラスの簡単な実装から始め、特性がクラスの有効性をどのように向上させるかを説明するために、この実装を基に構築することに注意してください。</p><pre class="programlisting"><span class="blue">classdef</span> TensileData
+   <span class="blue">properties</span>
+      Material = '';
+      SampleNumber = 0;
+      Stress
+      Strain
+      Modulus = 0;
+<span class="blue">   end</span>
+<span class="blue">end
+</span></pre></div><div itemprop="content"><a name="f2-74210"></a><h3 class="title" id="f2-74210">インスタンスの作成とデータの割り当て</h3><p>次のステートメントを使用して、<tt>TensileData</tt> オブジェクトを作成して、データを割り当てます。</p><pre class="programlisting">td = TensileData;
+td.Material = <span class="violet">'Carbon Steel'</span>;
+td.SampleNumber = 001;
+td.Stress = [2e4 4e4 6e4 8e4];
+td.Strain = [.12 .20 .31 .40];
+td.Modulus = mean(td.Stress./td.Strain);
+</pre><a name="f2-74218"></a><h4 class="title" id="f2-74218">クラスと構造体配列の利点の比較</h4><p><tt>TensileData</tt> オブジェクト (上記ステートメントの <tt>td</tt>) は、MATLAB 構造体配列と同様に取り扱います。ただし、一般的なデータ構造体を使用する場合と比較すると特殊化されたデータ構造体をクラスとして定義する方が、以下の MATLAB <a href="../../matlab/ref/struct.html"><tt>struct</tt></a> のように利点があります。</p><ul type="disc"><li><p>フィールド名のスペルを誤ると、エラーが表示されます。たとえば、以下を入力します。</p><pre class="programlisting">&gt;&gt;td.Modulis = ...
+</pre><p>構造体配列に新しいフィールドが追加されますが、<tt>td</tt> が <tt>TensileData</tt> クラスのインスタンスであると、エラーが返されます。</p></li><li><p>クラスは再利用が容易です。いったんユーザーがクラスを定義すると、新しい特性を追加するサブクラスを使用して容易に拡張できます。</p></li><li><p>クラスは識別が容易です。クラスは名前をもつので、関数 <a href="../../matlab/ref/whos.html"><tt>whos</tt></a>, <a href="../../matlab/ref/class.html"><tt>class</tt></a> やワークスペース ブラウザーを使用して、オブジェクトを識別できます。クラス名が意味のある名前であると、履歴を参照しやすくなります。 </p></li><li><p>クラスまたは値を含む、フィールドに値が割り当てられると、クラスは個々のフィールドを有効にできます。 </p></li><li><p>クラスはフィールドへのアクセスを制限できます。たとえば、特定のフィールドの読み込みは許可し、変更は不可能とすることができます。</p></li></ul><p>次の節では、<tt>TensileData</tt> クラスにおいて、型検査を追加してプロパティ アクセスを制限する方法を説明します。</p></div><div itemprop="content"><a name="f2-74243"></a><h3 class="title" id="f2-74243">プロパティ値の制限</h3><a name="restricting_properties_to_specific_values"></a><p>プロパティの <tt>set</tt> アクセス メソッドを定義することによって、プロパティを設定できる値を制限します。MATLAB ソフトウェアは、オブジェクトの作成時など、値がプロパティに設定されるときに必ずこの関数を呼び出します。</p><a name="f2-85348"></a><h4 class="title" id="f2-85348">Material プロパティの関数 set の定義</h4><p>プロパティ <tt>set</tt> メソッドは、<tt>Material</tt> プロパティに割り当て可能な文字列を、<tt>aluminum</tt>、<tt>stainless steel</tt>、<tt>carbon steel</tt> のいずれかに限ります。 </p><p>methods ブロックにこの関数定義を追加します。</p><pre class="programlisting"><span class="blue">classdef</span> TensileData
+   <span class="blue">properties</span>
+      Material = <span class="violet">'carbon steel'</span>;
+      SampleNumber = 0;
+      Stress
+      Strain
+      Modulus
+   <span class="blue">end</span> <span class="green">% properties</span>
+   <span class="blue">methods</span>
+      <span class="blue">function</span> obj = set.Material(obj,material)
+         <span class="blue">if</span> ~(strcmpi(material,<span class="violet">'aluminum'</span>) ||... 
+            strcmpi(material,<span class="violet">'stainless steel'</span>) ||... 
+            strcmpi(material,<span class="violet">'carbon steel'</span>))
+            error(<span class="violet">'Material must be aluminum, stainless steel, or carbon steel'</span>)
+         <span class="blue">end</span>
+      obj.Material = material;
+      <span class="blue">end </span><span class="green">% set.Material</span>
+   <span class="blue">end</span><span class="green">% methods</span>
+<span class="blue">end</span><span class="green">% classdef</span>
+</pre><p><tt>Material</tt> プロパティの設定が試みられると、MATLAB ランタイムは、プロパティの関数 <tt>set.Material</tt> にオブジェクトと指定した値 (入力引数 <tt>obj</tt> と <tt>material</tt>) を渡します。この場合、値が許容された値でない場合、関数はエラーを返します。そうでない場合、指定した値はプロパティの設定に使用されます。set メソッドのみが、オブジェクトのプロパティに (プロパティ set メソッドを呼び出さずに) 直接アクセスできます。</p><p>以下に例を示します。</p><pre class="programlisting">td = TensileData; td.Material = <span class="violet">'composite'</span>; <span class="red">TensileData/set.Material の使用エラー。Material は aluminum、stainless steel、carbon steel のいずれかでなければなりません</span>
+</pre></div><div itemprop="content"><a name="f2-74277"></a><h3 class="title" id="f2-74277">コンストラクターを使用したインターフェイスの単純化</h3><a name="simplifying_interface_with_constructor"></a><p>以下のコンストラクター関数を追加することによって、<tt>TensileData</tt> クラスのインターフェイスを単純化できます。</p><ul type="disc"><li><p>コンストラクターへの引数として、データを渡すことができる</p></li><li><p>プロパティ値の割り当て</p></li></ul><p>コンストラクターは、クラスと同じ名前をもつメソッドです。 </p><pre class="programlisting"><span class="blue">function</span> td = TensileData(material,samplenum,stress,strain)
+   <span class="blue">if</span> nargin &gt; 0 <span class="green">% Support calling with 0 arguments</span>
+      td.Material = material;
+      td.SampleNumber = samplenum;
+      td.Stress = stress;
+      td.Strain = strain;
+   <span class="blue">end</span> 
+<span class="blue">end</span> <span class="green">% TensileData</span>
+</pre><p>コンストラクターを使用すると、以下のステートメントで、データを使用して完全な <tt>TensileData</tt> オブジェクトを作成できます。</p><pre class="programlisting">td = TensileData(<span class="violet">'carbon steel'</span>,1,[2e4 4e4 6e4 8e4],[.12 .20 .31 .40]);
+</pre><a name="f2-85435"></a><h4 class="title" id="f2-85435">弾性率の計算</h4><p>コンストラクター関数は、<tt>Modulus</tt> プロパティの値に対する入力引数をもたないことに注意してください。これは、<tt>Modulus</tt> の値が以下のように決まるためです。</p><ul type="disc"><li><p><tt>Stress</tt> と <tt>Strain</tt> プロパティの値から容易に計算できます。</p></li><li><p><tt>Stress</tt> または <tt>Strain</tt> プロパティの値が変化すると、変更する必要があります。</p></li></ul><p>したがって、<tt>Modulus</tt> プロパティの値は、値が要求された場合にのみ計算するのが適切です。次の節で説明するプロパティ <tt>get</tt> access メソッドを使用してこれを行うことができます。</p></div><div itemprop="content"><a name="f2-85430"></a><h3 class="title" id="f2-85430">依存関係プロパティの使用</h3><a name="dependent_properties"></a><p><tt>TensileData</tt> オブジェクトは、<tt>Modulus</tt> プロパティの値を保存しません。その代わり、この値は、要求されたときに計算されます。この手法によって、<tt>Modulus</tt> プロパティの値を再計算する必要なく、<tt>Stress</tt> と <tt>Strain</tt> プロパティのデータを更新できます。 </p><a name="f2-85300"></a><h4 class="title" id="f2-85300">Modulus プロパティの get メソッド</h4><a name="defining_modulus_property_get_function"></a><p><tt>Modulus</tt> プロパティは <tt>Stress</tt> と <tt>Strain</tt> に依存するので、その <tt>Dependent</tt> 属性は論理値 <a href="../../matlab/ref/true.html"><tt>true</tt></a> に設定します。これを行うには、他の <tt>properties</tt> ブロックを作成して <tt>Dependent</tt> 属性を設定します。</p><p>さらに、<tt>get.Modulus</tt> メソッドは計算して <tt>Modulus</tt> プロパティの値を返すので、プロパティの <tt>SetAccess</tt> 属性を <tt>private</tt> に設定する必要があります。 </p><pre class="programlisting"><span class="blue">properties</span> (Dependent = true, SetAccess = private)
+   Modulus
+<span class="blue">end</span>
+</pre><p>methods ブロックに、プロパティ get メソッドを定義します。</p><pre class="programlisting"><span class="blue">methods</span> 
+   <span class="blue">function</span> modulus = get.Modulus(obj)
+      ind = find(obj.Strain &gt; 0); <span class="green">% Find nonzero strain</span>
+      modulus = mean(obj.Stress(ind)./obj.Strain(ind)); 
+   <span class="blue">end</span> <span class="green">% Modulus get method</span>
+<span class="blue">end</span> <span class="green">% methods</span></pre><p>この関数は、分母データのゼロを除いた後に、応力と歪みデータの比の平均を計算します。 </p><p>MATLAB ランタイムは、プロパティのクエリがあると、<tt>get.Modulus</tt> メソッドを呼び出します。次に、例を示します。</p><pre class="programlisting">td = TensileData(<span class="violet">'carbon steel'</span>,1,[2e4 4e4 6e4 8e4],[.12 .20 .31 .40]);
+td.Modulus
+ans =
+  1.9005e+005
+</pre><a name="br_01hs"></a><h4 class="title" id="br_01hs">Modulus プロパティの set メソッド</h4><p><tt>Dependent</tt> プロパティの値を設定するには、クラスにプロパティの set メソッドを実装しなければなりません。<tt>Modulus</tt> プロパティの設定を明示的に有効にする必要はありませんが、set メソッドを使用すると、エラー メッセージをカスタマイズできます。Modulus プロパティの set メソッドは、プロパティの現在の値を参照して、エラーを返します。</p><pre class="programlisting"><span class="blue">methods</span> 
+   <span class="blue">function</span> obj = set.Modulus(obj,~)
+   fprintf(<span class="violet">'%s%d\n'</span>,<span class="violet">'Modulus is: '</span>,obj.Modulus)
+   error(<span class="violet">'You cannot set Modulus explicitly'</span>); 
+<span class="blue">end</span> <span class="green">% Modulus get function</span></pre></div><div itemprop="content"><a name="f2-85393"></a><h3 class="title" id="f2-85393">TensileData オブジェクトの表示</h3><a name="displaying_tensiledata_objects"></a><p><tt>TensileData</tt> クラスは、<tt>disp</tt> メソッドを実装できます。このメソッドは、このクラスのオブジェクトが (たとえば、セミコロンで終わらない割り当てステートメントによって) コマンド ラインに表示される場合、表示を制御します。 </p><p><tt>TensileData</tt> <tt>disp</tt> メソッドは、<tt>Material</tt>, <tt>SampleNumber</tt>, <tt>Modulus</tt> プロパティの値を表示します。これらのプロパティはコマンド ウィンドウで容易に見られない生データを含むので、<tt>Stress</tt> と <tt>Strain</tt> プロパティのデータを表示しません。<tt>plot</tt> メソッド (次の節で説明します) は、応力と歪みのデータを表示する、より適切な方法を提供します。</p><p><tt>disp</tt> メソッドは、<a href="../../matlab/ref/fprintf.html"><tt>fprintf</tt></a> を使用して、コマンド ウィンドウに書式付きテキストを表示します。</p><pre class="programlisting"><span class="blue">methods</span>
+   <span class="blue">function</span> disp(td)
+      fprintf(1,<span class="violet">'Material: %s\nSample Number: %g\nModulus: %1.5g\n'</span>,...
+      td.Material,td.SampleNumber,td.Modulus);
+   <span class="blue">end</span> <span class="green">% disp</span>
+<span class="blue">end</span> <span class="green">% methods</span></pre></div><div itemprop="content"><a name="f2-74305"></a><h3 class="title" id="f2-74305">応力と歪みをプロットするメソッド</h3><a name="method_to_plot_stress_strain"></a><p>加えられた張力の範囲での材料の動作を知るには、応力/歪みのデータのグラフ表示が役立ちます。<tt>TensileData</tt> オブジェクトは、応力と歪みのデータを含むので、このデータをプロットするように設計されたクラス メソッドを定義すると役立ちます。</p><p><tt>TensileData</tt> <tt>plot</tt> メソッドは、応力と歪みのデータのライン グラフを作成し、タイトルと座標軸のラベルを追加して、張力データの記録の標準化されたグラフを作成します。</p><pre class="programlisting"><span class="blue">function</span> plot(td,varargin)
+   plot(td.Strain,td.Stress,varargin{:})
+   title([<span class="violet">'Stress/Strain plot for Sample'</span>,...
+      num2str(td.SampleNumber)])
+   ylabel(<span class="violet">'Stress (psi)'</span>)
+   xlabel(<span class="violet">'Strain %'</span>)
+<span class="blue">end</span> <span class="green">% plot</span>
+</pre><p>このメソッドの第 1 の引数は <tt>TensileData</tt> オブジェクトです。このオブジェクトには、データが含まれ、組み込み関数 <tt>plot</tt> ではなく<tt>TensileData</tt> クラスの <tt>plot</tt> メソッドに送信するために、MATLAB ランタイムで使用されます。 </p><p>続く引数の可変リストは、メソッド内から直接組み込み関数 <a href="../../matlab/ref/plot.html"><tt>plot</tt></a> に渡されます。このため、<tt>TensileData</tt> <tt>plot</tt> メソッドは、組み込み関数 <tt>plot</tt> のような動作が可能になります。これにより、ユーザーはラインを指定する引数またはプロパティ名/値の組をデータと共に渡すことができます。 </p><p>たとえば、以下のオブジェクトをプロットします。</p><pre class="programlisting">td = TensileData(<span class="violet">'carbon steel'</span>,1,[2e4 4e4 6e4 8e4],[.12 .20 .31 .40]);
+plot(td,<span class="violet">'-+g'</span>,<span class="violet">'LineWidth'</span>,2)
+</pre><p>次のグラフが作成されます。 </p><p>
+<img src="example--representing-structured-data_ja_JP_files/tensile1_ja_JP.gif" height="284" width="338" alt=""></p></div>
+</section>
+<div class="feedbackblock">この情報は役に立ちましたか？
+<input type="button" value="はい" onClick="openFeedbackWindow('http://www.mathworks.com/programs/bounce_hub_help.html?s_cid=Help_Topic_Survey&amp;surveyParams='+document.location.href+'-YES-R2013a');">
+<input type="button" value="いいえ" onClick="openFeedbackWindow('http://www.mathworks.com/programs/bounce_hub_help.html?s_cid=Help_Topic_Survey&amp;surveyParams='+document.location.href+'-NO-R2013a');">
+</div>
+<!--Last updated: Wed Jan 30 13:41:29 EST 2013-->
+
+               </div> <!-- close_content_container -->
+             </div> <!-- close_content_frame -->
+           </div> <!--  close_page_container -->
+         
+      <div class="footer_container">
+         <div class="footer">
+            <ul class="footernav">
+               <li class="footernav_trademarks"><a href="../../acknowledgments.html">謝辞 (英語)</a></li>
+               <li class="footernav_trademarks"><a href="../../../trademarks.txt">商標 (英語)</a></li>
+               <li class="footernav_patents"><a href="../../../patents.txt">特許 (英語)</a></li>
+               <li class="footernav_help"><a href="../../../license.txt">ご利用条件 (英語)</a></li>
+            </ul>
+            <div class="copyright">&copy; 1994-2013 The MathWorks, Inc.</div>
+         </div>
+      </div>
+   
+         </div> <!--  close_site_container -->
+         </body>
+</html>

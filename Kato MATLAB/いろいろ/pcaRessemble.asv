@@ -1,0 +1,10 @@
+function [Xr]=pcaRestructure(X,f)
+
+
+Xm=mean(X);                     %caliculating mean spectra
+Xc=bsxfun(@minus,X,Xm);         %mean centering
+R=Xc'*Xc;                       %caliculating variance-covariance matrix
+[P L]=eigs(R,f);
+T=Xc*P;
+Xcr=T*P';
+Xr=bsxfun(@plus,Xcr,Xm);

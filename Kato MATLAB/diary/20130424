@@ -1,0 +1,31 @@
+fullfile(pwd,'file')
+
+ans =
+
+C:\Users\Genkawa\Documents\MATLAB\Kato MATLAB\file
+
+dir('file')
+
+.                                       icecream.mat                            mizu.mat                                
+..                                      icecream_cut.mat                        randomwalk.m                            
+brownrice1.mat                          icecream_differnceoftreatment.fig       the difference between MSC and SNV.fig  
+c2d.m                                   icecream_msc_unsc.mat                   the ratio of mat to unsc.fig            
+datasets.mat                            icecream_snv_msc.mat                    tohu.mat                                
+difsp.m                                 icecream_snv_unsc.mat                   
+
+Folder = fullfile(pwd,'file')
+
+Folder =
+
+C:\Users\Genkawa\Documents\MATLAB\Kato MATLAB\file
+
+dir(Folder)
+
+.                                       icecream.mat                            mizu.mat                                
+..                                      icecream_cut.mat                        randomwalk.m                            
+brownrice1.mat                          icecream_differnceoftreatment.fig       the difference between MSC and SNV.fig  
+c2d.m                                   icecream_msc_unsc.mat                   the ratio of mat to unsc.fig            
+datasets.mat                            icecream_snv_msc.mat                    tohu.mat                                
+difsp.m                                 icecream_snv_unsc.mat                   
+
+diary off

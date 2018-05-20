@@ -1,0 +1,22 @@
+help diary
+  <strong>diary</strong>   MATLABセッションのテキストを保存
+  
+  <strong>diary</strong> FILENAME は、コマンドウィンドウからのすべての入力とほとんどの
+  コマンドウィンドウの結果を指定のファイルに書き出します。ファイルが
+  指定されない場合は、ファイル 'diary' が使用されます。
+ 
+  <strong>diary</strong> OFFは、書き出しを中止します。
+  <strong>diary</strong> ONは、diaryモードに戻します。
+  DIARYだけでは、diaryモードの状態の切り替えを行います。
+ 
+  ファイル名が文字列に保存されているときは、関数形式のシンタックス、
+  <strong>diary</strong>('file') を使ってください。
+ 
+    参考 <a href="matlab:help save">save</a>.
+
+    ヘルプ ブラウザー内の参照ページ
+       <a href="matlab:doc diary">doc diary</a>
+
+diary on
+fibonach
+diary off

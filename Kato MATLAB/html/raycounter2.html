@@ -1,0 +1,269 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Ray trace</title><meta name="generator" content="MATLAB 8.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-10-28"><meta name="DC.source" content="raycounter2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Ray trace</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Ray trace simulation</a></li><li><a href="#2">initialization</a></li><li><a href="#3">Define const</a></li><li><a href="#4">Monte Carlo simulation</a></li></ul></div><h2>Ray trace simulation<a name="1"></a></h2><p>l[mm]:total light path length</p><p>mus[mm-1]:scatter coefficient <img src="raycounter2_eq47109.png" alt="${\mu}_{s}$"></p><p>mua[mm-1]:absorption coefficient <img src="raycounter2_eq81644.png" alt="${\mu}_a$"></p><p>g:anisotropic scatter coefficient (-1 to 1)</p><p>L[mm]:light path length in one step</p><p>theta[rad]:angle of light path to z axis which is culculated by <img src="raycounter2_eq60101.png" alt="$\theta = \left[\frac{1}{2g}\left\{1 + {g}^{2}-{\left(\frac{1-{g}^{2}}{1+g-2g{R}_{2}} \right)}^{2} \right\}\right]$"></p><p>phi[rad]:angle of light path to xy surface, <img src="raycounter2_eq37127.png" alt="$\phi = 2 \pi R$"></p><p>W:light intensity</p><p>r,z and R,Z:cylindrical cordinate of photon and accumulation of each cordinates</p><h2>initialization<a name="2"></a></h2><pre class="codeinput"><span class="comment">%clear</span>
+<span class="comment">%</span>
+<span class="comment">% plot(0,0,'rx')</span>
+<span class="comment">% xlabel('r [mm]');</span>
+<span class="comment">% ylabel('z [mm]');</span>
+<span class="comment">% axis equal;</span>
+<span class="comment">% grid on;</span>
+<span class="comment">% hold on;</span>
+</pre><h2>Define const<a name="3"></a></h2><pre class="codeinput">N = 10000;
+endR = zeros(N,1);
+endZ = zeros(N,1);
+maxZ = zeros(N,1);
+returned = 0;
+mus = 0.1;
+mua = 1.5;
+g = 0.9;
+W0 = 10000;
+
+cordr = -30:0.1:30;
+cordz = 0:0.1:50;
+counter= zeros(length(cordz),length(cordr));
+</pre><h2>Monte Carlo simulation<a name="4"></a></h2><pre class="codeinput">bar = waitbar(0,<span class="string">'Please wait...'</span>);
+<span class="keyword">for</span> i = 1:N
+L = 0;
+theta = 0;
+phi = 0;
+r = 0;
+z = 0;
+R = 0;
+Z = 0;
+W = W0;
+ixr = 0;
+ixz = 0;
+
+    <span class="keyword">while</span> z &gt;= 0 &amp;&amp; z &lt; 50 &amp;&amp; W &gt; W0*0.05
+        l = abs(log(rand))/(mus+mua);
+        theta = theta + <span class="keyword">...</span>
+            acos(1/(2*g)*(1+g^2-((1-g^2)/(1+g-2*g*rand))^2));
+        phi = 2*pi*rand;
+
+        L = L + l;
+
+        r = r + l*sin(phi);
+        z = z + l*cos(theta);
+
+        R = [R,r];
+        Z = [Z,z];
+
+        <span class="keyword">if</span> z &gt; 0
+            returned = [returned,i];
+            <span class="keyword">for</span> j = 1:length(R)
+                ixr = find(int16(cordr*10)==round(R(j)*10));
+                ixz = find(int16(cordz*10)==round(Z(j)*10));
+                counter(ixz,ixr) = counter(ixz,ixr) + 1;
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+        W = W0*exp(-mua*l);
+    <span class="keyword">end</span>
+
+<span class="comment">% max penetration depth</span>
+    maxZ(i) = max(Z);
+    endR(i) = R(end);
+    endZ(i) = Z(end);
+
+<span class="comment">% % plot</span>
+<span class="comment">%     plot(R,Z);</span>
+<span class="comment">%     plot(R(end),Z(end),'r.','markersize',5,'linewidth',3);</span>
+<span class="comment">%     axis equal;</span>
+<span class="comment">%     grid on</span>
+     waitbar(i/N)
+<span class="keyword">end</span>
+
+returned = unique(returned);
+depth =  maxZ(find(returned));
+close(bar)
+figure;
+imagesc(counter);
+title(strcat(datestr(now,<span class="string">'yyyymmdd'</span>),<span class="string">' mua='</span>,num2str(mua),<span class="string">' mus='</span>,num2str(mus),<span class="string">' N='</span>,num2str(N)));
+ylabel(<span class="string">'Depth [*0.1 mm]'</span>)
+colorbar;
+<span class="comment">%sendmail('hdkkato453@gmail.com','&#12471;&#12511;&#12517;&#12524;&#12540;&#12471;&#12519;&#12531;&#32066;&#20102;','&#12471;&#12511;&#12517;&#12524;&#12540;&#12471;&#12519;&#12531;&#12364;&#32066;&#12431;&#12426;&#12414;&#12375;&#12383;&#12290;')</span>
+<span class="comment">% culiculate mean depth</span>
+meanZ = mean(maxZ(maxZ&lt;50));
+</pre><img vspace="5" hspace="5" src="raycounter2_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Ray trace
+
+
+%% Ray trace simulation
+% l[mm]:total light path length
+% 
+% mus[mm-1]:scatter coefficient ${\mu}_{s}$
+%
+% mua[mm-1]:absorption coefficient ${\mu}_a$
+%
+% g:anisotropic scatter coefficient (-1 to 1)
+%
+% L[mm]:light path length in one step
+%
+% theta[rad]:angle of light path to z axis
+% which is culculated by $\theta = \left[\frac{1}{2g}\left\{1 +
+% {g}^{2}-{\left(\frac{1-{g}^{2}}{1+g-2g{R}_{2}} \right)}^{2}
+% \right\}\right]$
+%
+% phi[rad]:angle of light path to xy surface,
+% $\phi = 2 \pi R$
+%
+% W:light intensity
+%
+% r,z and R,Z:cylindrical cordinate of photon and accumulation of each cordinates  
+
+%% initialization
+%clear
+% 
+% plot(0,0,'rx')
+% xlabel('r [mm]');
+% ylabel('z [mm]');
+% axis equal;
+% grid on;
+% hold on;
+
+%% Define const
+
+N = 10000;
+endR = zeros(N,1);
+endZ = zeros(N,1);
+maxZ = zeros(N,1);
+returned = 0;
+mus = 0.1;
+mua = 1.5;
+g = 0.9;
+W0 = 10000;
+
+cordr = -30:0.1:30;
+cordz = 0:0.1:50;
+counter= zeros(length(cordz),length(cordr));
+%% Monte Carlo simulation
+
+bar = waitbar(0,'Please wait...');
+for i = 1:N
+L = 0;
+theta = 0;
+phi = 0;
+r = 0;
+z = 0;
+R = 0;
+Z = 0;
+W = W0;
+ixr = 0;
+ixz = 0;
+
+    while z >= 0 && z < 50 && W > W0*0.05
+        l = abs(log(rand))/(mus+mua);
+        theta = theta + ...
+            acos(1/(2*g)*(1+g^2-((1-g^2)/(1+g-2*g*rand))^2));
+        phi = 2*pi*rand;
+        
+        L = L + l;
+        
+        r = r + l*sin(phi);
+        z = z + l*cos(theta);
+        
+        R = [R,r];
+        Z = [Z,z];
+        
+        if z > 0
+            returned = [returned,i];
+            for j = 1:length(R)
+                ixr = find(int16(cordr*10)==round(R(j)*10));
+                ixz = find(int16(cordz*10)==round(Z(j)*10));
+                counter(ixz,ixr) = counter(ixz,ixr) + 1;
+            end
+        end
+        W = W0*exp(-mua*l);
+    end
+
+% max penetration depth
+    maxZ(i) = max(Z);
+    endR(i) = R(end);
+    endZ(i) = Z(end);
+    
+% % plot
+%     plot(R,Z);
+%     plot(R(end),Z(end),'r.','markersize',5,'linewidth',3);
+%     axis equal;
+%     grid on
+     waitbar(i/N)
+end
+
+returned = unique(returned);
+depth =  maxZ(find(returned));
+close(bar)
+figure;
+imagesc(counter);
+title(strcat(datestr(now,'yyyymmdd'),' mua=',num2str(mua),' mus=',num2str(mus),' N=',num2str(N)));
+ylabel('Depth [*0.1 mm]')
+colorbar;
+%sendmail('hdkkato453@gmail.com','シミュレーション終了','シミュレーションが終わりました。')
+% culiculate mean depth
+meanZ = mean(maxZ(maxZ<50));
+##### SOURCE END #####
+--></body></html>

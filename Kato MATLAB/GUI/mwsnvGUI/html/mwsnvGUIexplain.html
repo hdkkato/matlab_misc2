@@ -1,0 +1,443 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>mwsnvGUIexplain</title><meta name="generator" content="MATLAB 8.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-05-14"><meta name="DC.source" content="mwsnvGUIexplain.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#3">--- opening&#38306;&#25968;</a></li><li><a href="#6">--- output&#38306;&#25968;</a></li><li><a href="#9">--- fileimport&#12508;&#12479;&#12531;&#12398;&#12467;&#12540;&#12523;&#12496;&#12483;&#12463;</a></li><li><a href="#12">--- reffernce&#12508;&#12479;&#12531;&#12398;&#12467;&#12540;&#12523;&#12496;&#12483;&#12463;</a></li><li><a href="#15">--- &#12486;&#12461;&#12473;&#12488;&#12508;&#12483;&#12463;&#12473;&#12398;&#12467;&#12540;&#12523;&#12496;&#12483;&#12463;</a></li><li><a href="#18">--- &#12486;&#12461;&#12473;&#12488;&#12508;&#12483;&#12463;&#12473;&#12398;&#21021;&#26399;&#21270;</a></li><li><a href="#21">--- &#12509;&#12483;&#12503;&#12450;&#12483;&#12503;&#12513;&#12491;&#12517;&#12540;&#12398;&#12467;&#12540;&#12523;&#12496;&#12483;&#12463;</a></li><li><a href="#24">--- &#12509;&#12483;&#12503;&#12450;&#12483;&#12503;&#12513;&#12491;&#12517;&#12540;&#12398;&#21021;&#26399;&#21270;</a></li><li><a href="#27">--- mwsnv&#12508;&#12479;&#12531;&#12398;&#12467;&#12540;&#12523;&#12496;&#12483;&#12463;</a></li></ul></div><pre class="codeinput"><span class="keyword">function</span> varargout = mwsnvGUIexplain(varargin)
+</pre><pre class="codeinput"><span class="comment">% MWSNVGUI MATLAB code for mwsnvGUI.fig</span>
+<span class="comment">%      MWSNVGUI, by itself, creates a new MWSNVGUI or raises the existing</span>
+<span class="comment">%      singleton*.</span>
+<span class="comment">%</span>
+<span class="comment">%      H = MWSNVGUI returns the handle to a new MWSNVGUI or the handle to</span>
+<span class="comment">%      the existing singleton*.</span>
+<span class="comment">%</span>
+<span class="comment">%      MWSNVGUI('CALLBACK',hObject,eventData,handles,...) calls the local</span>
+<span class="comment">%      function named CALLBACK in MWSNVGUI.M with the given input arguments.</span>
+<span class="comment">%</span>
+<span class="comment">%      MWSNVGUI('Property','Value',...) creates a new MWSNVGUI or raises the</span>
+<span class="comment">%      existing singleton*.  Starting from the left, property value pairs are</span>
+<span class="comment">%      applied to the GUI before mwsnvGUI_OpeningFcn gets called.  An</span>
+<span class="comment">%      unrecognized property name or invalid value makes property application</span>
+<span class="comment">%      stop.  All inputs are passed to mwsnvGUI_OpeningFcn via varargin.</span>
+<span class="comment">%</span>
+<span class="comment">%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one</span>
+<span class="comment">%      instance to run (singleton)".</span>
+<span class="comment">%</span>
+<span class="comment">% See also: GUIDE, GUIDATA, GUIHANDLES</span>
+
+<span class="comment">% Edit the above text to modify the response to help mwsnvGUI</span>
+
+<span class="comment">% Last Modified by GUIDE v2.5 13-May-2013 13:54:32</span>
+
+<span class="comment">% GUIDE &#12398;&#21021;&#26399;&#21270;&#12479;&#12473;&#12463;&#12290;&#12371;&#12398;&#12467;&#12540;&#12489;&#12399;&#32232;&#38598;&#12375;&#12394;&#12356;&#12391;&#12367;&#12384;&#12373;&#12356;&#12290;</span>
+gui_Singleton = 1;
+gui_State = struct(<span class="string">'gui_Name'</span>,       mfilename, <span class="keyword">...</span>
+                   <span class="string">'gui_Singleton'</span>,  gui_Singleton, <span class="keyword">...</span>
+                   <span class="string">'gui_OpeningFcn'</span>, @mwsnvGUI_OpeningFcn, <span class="keyword">...</span>
+                   <span class="string">'gui_OutputFcn'</span>,  @mwsnvGUI_OutputFcn, <span class="keyword">...</span>
+                   <span class="string">'gui_LayoutFcn'</span>,  [] , <span class="keyword">...</span>
+                   <span class="string">'gui_Callback'</span>,   []);
+<span class="keyword">if</span> nargin &amp;&amp; ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+<span class="keyword">else</span>
+    gui_mainfcn(gui_State, varargin{:});
+<span class="keyword">end</span>
+<span class="comment">% End initialization code - DO NOT EDIT</span>
+</pre><h2>--- opening&#38306;&#25968;<a name="3"></a></h2><pre class="codeinput"><span class="keyword">function</span> mwsnvGUI_OpeningFcn(hObject, eventdata, handles, varargin)
+</pre><pre class="codeinput"><span class="comment">% GUI &#12518;&#12540;&#12470;&#12540;&#12364; GUI &#12395;&#12450;&#12463;&#12475;&#12473;&#12377;&#12427;&#21069;&#12395;&#12289;&#23455;&#34892;&#12373;&#12428;&#12427;&#21021;&#26399;&#21270;&#12479;&#12473;&#12463;&#12290;</span>
+<span class="comment">% &#21021;&#26399;&#21205;&#20316;&#12392;&#12375;&#12390;&#22259;&#12398;&#25551;&#30011;&#12394;&#12393;&#12434;&#34892;&#12358;&#38555;&#12395;&#20351;&#29992;&#12290;</span>
+<span class="comment">%</span>
+<span class="comment">% &#20197;&#19979;&#12399;&#12381;&#12428;&#12382;&#12428;&#12398;&#38306;&#25968;&#12395;&#12362;&#12369;&#12427;&#24341;&#25968;&#12398;&#35500;&#26126;</span>
+<span class="comment">% hObject    figure&#12408;&#12398;&#12495;&#12531;&#12489;&#12523;</span>
+<span class="comment">% eventdata  &#29694;&#22312;&#20351;&#12431;&#12428;&#12390;&#12356;&#12394;&#12356; - &#20170;&#24460;&#12398;MATLAB&#12398;&#12496;&#12540;&#12472;&#12519;&#12531;&#12395;&#12424;&#12387;&#12390;&#20351;&#12431;&#12428;&#12427;&#21487;&#33021;&#24615;&#12364;&#12354;&#12427;</span>
+<span class="comment">% handles    &#12495;&#12531;&#12489;&#12523;&#27083;&#36896;&#20307; &#12518;&#12540;&#12470;&#12540;&#12364;&#20351;&#29992;&#12377;&#12427;&#12487;&#12540;&#12479;&#12420;&#22259;&#34920;&#12398;&#12479;&#12464;&#12394;&#12393;&#12399;&#12371;&#12371;&#12395;&#26684;&#32013;&#12373;&#12428;&#12427; (GUIDATA&#12434;&#21442;&#29031;)</span>
+<span class="comment">% varargin   &#21487;&#22793;&#20837;&#21147;&#24341;&#25968; GUI&#12391;&#12467;&#12510;&#12531;&#12489;&#12521;&#12452;&#12531;&#12398;&#20837;&#21147;&#12364;&#24517;&#35201;&#12394;&#26178;&#12395;&#29992;&#12356;&#12425;&#12428;&#12427; (VARARGIN&#12434;&#21442;&#29031;)</span>
+
+<span class="comment">% Choose default command line output for mwsnvGUI</span>
+handles.output = hObject;
+
+<span class="comment">% &#12495;&#12531;&#12489;&#12523;&#27083;&#36896;&#20307;&#12398;&#21021;&#26399;&#21270;</span>
+handles.refferncevalue = varargin;
+handles.fmaxvalue = varargin;
+handles.ws = varargin;
+
+<span class="comment">% axes&#12398;&#12463;&#12522;&#12450;</span>
+cla(handles.preview_axes);
+cla(handles.result_axes);
+
+<span class="comment">% &#12495;&#12531;&#12489;&#12523;&#27083;&#36896;&#20307;&#12398;&#26356;&#26032;</span>
+guidata(hObject, handles);
+</pre><img vspace="5" hspace="5" src="mwsnvGUIexplain_01.png" alt=""> <h2>--- output&#38306;&#25968;<a name="6"></a></h2><pre class="codeinput"><span class="keyword">function</span> varargout = mwsnvGUI_OutputFcn(hObject, eventdata, handles)
+</pre><pre class="codeinput"><span class="comment">% opening &#38306;&#25968;&#12364;&#12467;&#12531;&#12488;&#12525;&#12540;&#12523;&#12434;&#36820;&#12375;&#12289;&#12467;&#12531;&#12488;&#12525;&#12540;&#12523;&#12364;&#12467;&#12510;&#12531;&#12489; &#12521;&#12452;&#12531;&#12395;&#36820;&#12427;&#21069;&#12395;&#12289;MATLAB &#12467;&#12510;&#12531;&#12489; &#12521;&#12452;&#12531;&#12395;&#20986;&#21147;&#12434;&#36820;&#12377;&#12290;</span>
+
+<span class="comment">% Get default command line output from handles structure</span>
+varargout{1} = handles.output;
+</pre><img vspace="5" hspace="5" src="mwsnvGUIexplain_02.png" alt=""> <h2>--- fileimport&#12508;&#12479;&#12531;&#12398;&#12467;&#12540;&#12523;&#12496;&#12483;&#12463;<a name="9"></a></h2><pre class="codeinput"><span class="keyword">function</span> fileimport_Callback(hObject, eventdata, handles)
+</pre><pre class="codeinput"><span class="comment">% &#12503;&#12483;&#12471;&#12517;&#12508;&#12479;&#12531;&#12395;&#21106;&#12426;&#24403;&#12390;&#12425;&#12428;&#12383;&#21205;&#20316;&#12434;&#23455;&#34892;&#12377;&#12427;</span>
+
+<span class="comment">% &#12501;&#12449;&#12452;&#12523;&#12434;&#21462;&#12426;&#20986;&#12377;&#27161;&#28310;&#12480;&#12452;&#12450;&#12525;&#12464; &#12508;&#12483;&#12463;&#12473;&#12434;&#38283;&#12367;</span>
+data = uiimport(<span class="string">'-file'</span>);
+
+<span class="comment">% csv&#12501;&#12449;&#12452;&#12523;&#12363;&#12425;&#12473;&#12506;&#12463;&#12488;&#12523;&#12434;&#12452;&#12531;&#12509;&#12540;&#12488;&#12375;&#12289;&#12495;&#12531;&#12489;&#12523;&#27083;&#36896;&#20307;&#12408;&#26684;&#32013;</span>
+data = translength(data.data);
+handles.wave = data(1,:);
+handles.spec = data(2:end,:);
+
+<span class="comment">% &#12495;&#12531;&#12489;&#12523;&#27083;&#36896;&#20307;&#12398;&#26356;&#26032;</span>
+guidata(hObject, handles);
+
+<span class="comment">%&#12473;&#12506;&#12463;&#12488;&#12523;&#12398;&#12503;&#12525;&#12483;&#12488;</span>
+axes(handles.preview_axes);
+plot(handles.wave, handles.spec);
+axis(handles.preview_axes, <span class="string">'tight'</span>);
+</pre><h2>--- reffernce&#12508;&#12479;&#12531;&#12398;&#12467;&#12540;&#12523;&#12496;&#12483;&#12463;<a name="12"></a></h2><pre class="codeinput"><span class="keyword">function</span> reffernce_Callback(hObject, eventdata, handles)
+</pre><pre class="codeinput"><span class="comment">% &#12501;&#12449;&#12452;&#12523;&#12434;&#21462;&#12426;&#20986;&#12377;&#27161;&#28310;&#12480;&#12452;&#12450;&#12525;&#12464; &#12508;&#12483;&#12463;&#12473;&#12434;&#38283;&#12367;</span>
+[fname, dpath, findex] = uigetfile(<span class="string">'*.csv'</span>);
+
+<span class="comment">% &#12501;&#12449;&#12452;&#12523;&#12398;&#12497;&#12473;&#12434;&#21462;&#24471;</span>
+<span class="keyword">if</span> findex~=0
+    fpath = fullfile(dpath, fname);
+<span class="keyword">else</span>
+    disp(<span class="string">'&#12501;&#12449;&#12452;&#12523;&#12364;&#12354;&#12426;&#12414;&#12379;&#12435;&#12290;'</span>);
+<span class="keyword">end</span>;
+
+<span class="comment">% csv&#12501;&#12449;&#12452;&#12523;&#12363;&#12425;&#12487;&#12540;&#12479;&#12434;&#12452;&#12531;&#12509;&#12540;&#12488;&#12375;&#12289;&#12495;&#12531;&#12489;&#12523;&#27083;&#36896;&#20307;&#12408;&#26684;&#32013;</span>
+ref = importcsv4(fpath);
+ref = translength(ref);
+handles.refferncevalue = ref(:,1);
+
+<span class="comment">% &#12495;&#12531;&#12489;&#12523;&#27083;&#36896;&#20307;&#12398;&#26356;&#26032;</span>
+guidata(hObject, handles);
+</pre><h2>--- &#12486;&#12461;&#12473;&#12488;&#12508;&#12483;&#12463;&#12473;&#12398;&#12467;&#12540;&#12523;&#12496;&#12483;&#12463;<a name="15"></a></h2><pre class="codeinput"><span class="keyword">function</span> windowsize_Callback(hObject, eventdata, handles)
+</pre><pre class="codeinput"><span class="comment">% &#12486;&#12461;&#12473;&#12488;&#12508;&#12483;&#12463;&#12473;&#12398;&#25991;&#23383;&#21015;&#12434;&#21462;&#24471;&#12375;double&#22411;&#12395;&#22793;&#25563;</span>
+val = str2double(get(hObject,<span class="string">'String'</span>));
+
+<span class="comment">% &#25968;&#20516;&#12434;&#12495;&#12531;&#12489;&#12523;&#27083;&#36896;&#20307;&#12395;&#26684;&#32013;</span>
+handles.ws = val;
+
+<span class="comment">% &#12495;&#12531;&#12489;&#12523;&#27083;&#36896;&#20307;&#12398;&#26356;&#26032;</span>
+guidata(hObject, handles);
+</pre><h2>--- &#12486;&#12461;&#12473;&#12488;&#12508;&#12483;&#12463;&#12473;&#12398;&#21021;&#26399;&#21270;<a name="18"></a></h2><pre class="codeinput"><span class="keyword">function</span> windowsize_CreateFcn(hObject, eventdata, handles)
+</pre><pre class="codeinput"><span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+<span class="keyword">end</span>
+</pre><h2>--- &#12509;&#12483;&#12503;&#12450;&#12483;&#12503;&#12513;&#12491;&#12517;&#12540;&#12398;&#12467;&#12540;&#12523;&#12496;&#12483;&#12463;<a name="21"></a></h2><pre class="codeinput"><span class="keyword">function</span> fmax_Callback(hObject, eventdata, handles)
+</pre><pre class="codeinput"><span class="comment">% &#12509;&#12483;&#12503;&#12450;&#12483;&#12503;&#12513;&#12491;&#12517;&#12540;&#19978;&#12398;&#25991;&#23383;&#21015;&#12392;&#12381;&#12428;&#12395;&#23550;&#24540;&#12375;&#12383;&#20516;&#12434;&#21462;&#24471;</span>
+str = get(hObject,<span class="string">'String'</span>);
+val = get(hObject,<span class="string">'Value'</span>);
+
+<span class="comment">% &#36984;&#25246;&#12375;&#12383;&#38917;&#30446;&#12395;&#24540;&#12376;&#12390;&#12495;&#12531;&#12489;&#12523;&#12395;&#20516;&#12434;&#36820;&#12377;</span>
+<span class="keyword">switch</span> str{val};
+    <span class="keyword">case</span> <span class="string">'1'</span>
+        handles.fmaxvalue = 1;
+    <span class="keyword">case</span> <span class="string">'2'</span>
+        handles.fmaxvalue = 2;
+    <span class="keyword">case</span> <span class="string">'3'</span>
+        handles.fmaxvalue = 3;
+    <span class="keyword">case</span> <span class="string">'4'</span>
+        handles.fmaxvalue = 4;
+<span class="keyword">end</span>
+
+<span class="comment">% &#12495;&#12531;&#12489;&#12523;&#27083;&#36896;&#20307;&#12398;&#26356;&#26032;</span>
+guidata(hObject, handles);
+</pre><h2>--- &#12509;&#12483;&#12503;&#12450;&#12483;&#12503;&#12513;&#12491;&#12517;&#12540;&#12398;&#21021;&#26399;&#21270;<a name="24"></a></h2><pre class="codeinput"><span class="keyword">function</span> fmax_CreateFcn(hObject, eventdata, handles)
+</pre><pre class="codeinput"><span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+<span class="keyword">end</span>
+</pre><h2>--- mwsnv&#12508;&#12479;&#12531;&#12398;&#12467;&#12540;&#12523;&#12496;&#12483;&#12463;<a name="27"></a></h2><pre class="codeinput"><span class="keyword">function</span> mwsnv_Callback(hObject, eventdata, handles)
+</pre><pre class="codeinput"><span class="comment">% mwsnv&#12450;&#12523;&#12468;&#12522;&#12474;&#12512;&#12398;&#23455;&#34892;</span>
+
+<span class="comment">% &#12495;&#12531;&#12489;&#12523;&#27083;&#36896;&#20307;&#12363;&#12425;&#35336;&#31639;&#12395;&#24517;&#35201;&#12394;&#21508;&#31278;&#20516;&#12434;&#20195;&#20837;</span>
+x = handles.spec;
+y = handles.refferncevalue;
+fmax = handles.fmaxvalue;
+w = handles.wave;
+ws = handles.ws;
+
+<span class="comment">% MWSNV&#12450;&#12523;&#12468;&#12522;&#12474;&#12512;&#12398;&#23455;&#34892;</span>
+[SSR]=mwsnv4gui(x,y,fmax,w,ws);
+
+<span class="comment">% axes&#12495;&#12531;&#12489;&#12523;&#12434;handles.result_axes&#12395;&#25351;&#23450;&#12375;WMSNV&#12450;&#12523;&#12468;&#12522;&#12474;&#12512;&#12398;&#32080;&#26524;&#12434;&#12503;&#12525;&#12483;&#12488;</span>
+axes(handles.result_axes);
+plot(w(1:end-ws+1),(SSR(2,:)),<span class="string">'m'</span>,w(1:end-ws+1),(SSR(1,:)),<span class="string">'r'</span>,w(1:end-ws+1),(SSR(end,:)),<span class="string">'b'</span>);
+
+<span class="comment">% set(h_axes, 'PropertyName', Value)&#12399;axes&#12495;&#12531;&#12489;&#12523;&#20013;&#12398;&#21046;&#24481;&#12375;&#12383;&#12356;&#38917;&#30446; (&#12503;&#12525;&#12497;&#12486;&#12451;) &#12434;&#35373;&#23450;&#12377;&#12427;</span>
+<span class="comment">% &#20363;&#12360;&#12400;x&#36600;&#12398;&#31684;&#22258;&#12434;&#22793;&#12360;&#12383;&#12356;&#22580;&#21512;&#12399;axes&#12495;&#12531;&#12489;&#12523;&#20013;&#12398;'xlim'&#12434;&#35373;&#23450;&#12377;&#12427;</span>
+set(handles.result_axes,<span class="string">'YScale'</span>,<span class="string">'log'</span>);
+axis(handles.result_axes,<span class="string">'tight'</span>);
+
+<span class="comment">% &#20316;&#25104; xlabel</span>
+xlabel(handles.result_axes, <span class="string">'Window position/cm^-^1'</span>);
+
+<span class="comment">% &#20316;&#25104; ylabel</span>
+ylabel(handles.result_axes, <span class="string">'SSR'</span>);
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+function varargout = mwsnvGUIexplain(varargin)
+% MWSNVGUI MATLAB code for mwsnvGUI.fig
+%      MWSNVGUI, by itself, creates a new MWSNVGUI or raises the existing
+%      singleton*.
+%
+%      H = MWSNVGUI returns the handle to a new MWSNVGUI or the handle to
+%      the existing singleton*.
+%
+%      MWSNVGUI('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in MWSNVGUI.M with the given input arguments.
+%
+%      MWSNVGUI('Property','Value',...) creates a new MWSNVGUI or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before mwsnvGUI_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to mwsnvGUI_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help mwsnvGUI
+
+% Last Modified by GUIDE v2.5 13-May-2013 13:54:32
+
+% GUIDE の初期化タスク。このコードは編集しないでください。
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @mwsnvGUI_OpeningFcn, ...
+                   'gui_OutputFcn',  @mwsnvGUI_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+
+%% REPLACE_WITH_DASH_DASH- opening関数
+function mwsnvGUI_OpeningFcn(hObject, eventdata, handles, varargin)
+% GUI ユーザーが GUI にアクセスする前に、実行される初期化タスク。
+% 初期動作として図の描画などを行う際に使用。
+%
+% 以下はそれぞれの関数における引数の説明
+% hObject    figureへのハンドル
+% eventdata  現在使われていない - 今後のMATLABのバージョンによって使われる可能性がある
+% handles    ハンドル構造体 ユーザーが使用するデータや図表のタグなどはここに格納される (GUIDATAを参照)
+% varargin   可変入力引数 GUIでコマンドラインの入力が必要な時に用いられる (VARARGINを参照)
+
+% Choose default command line output for mwsnvGUI
+handles.output = hObject;
+
+% ハンドル構造体の初期化
+handles.refferncevalue = varargin;
+handles.fmaxvalue = varargin;
+handles.ws = varargin;
+
+% axesのクリア
+cla(handles.preview_axes);
+cla(handles.result_axes);
+
+% ハンドル構造体の更新
+guidata(hObject, handles);
+
+
+%% REPLACE_WITH_DASH_DASH- output関数
+function varargout = mwsnvGUI_OutputFcn(hObject, eventdata, handles) 
+% opening 関数がコントロールを返し、コントロールがコマンド ラインに返る前に、MATLAB コマンド ラインに出力を返す。
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+%% REPLACE_WITH_DASH_DASH- fileimportボタンのコールバック
+function fileimport_Callback(hObject, eventdata, handles)
+% プッシュボタンに割り当てられた動作を実行する
+
+% ファイルを取り出す標準ダイアログ ボックスを開く
+data = uiimport('-file');
+
+% csvファイルからスペクトルをインポートし、ハンドル構造体へ格納
+data = translength(data.data);
+handles.wave = data(1,:);
+handles.spec = data(2:end,:);
+
+% ハンドル構造体の更新
+guidata(hObject, handles);
+
+%スペクトルのプロット
+axes(handles.preview_axes);
+plot(handles.wave, handles.spec);
+axis(handles.preview_axes, 'tight');
+
+
+%% REPLACE_WITH_DASH_DASH- reffernceボタンのコールバック
+function reffernce_Callback(hObject, eventdata, handles)
+% ファイルを取り出す標準ダイアログ ボックスを開く
+[fname, dpath, findex] = uigetfile('*.csv');
+
+% ファイルのパスを取得
+if findex~=0 
+    fpath = fullfile(dpath, fname);
+else 
+    disp('ファイルがありません。');
+end;
+
+% csvファイルからデータをインポートし、ハンドル構造体へ格納
+ref = importcsv4(fpath);
+ref = translength(ref);
+handles.refferncevalue = ref(:,1);
+
+% ハンドル構造体の更新
+guidata(hObject, handles);
+
+
+%% REPLACE_WITH_DASH_DASH- テキストボックスのコールバック
+function windowsize_Callback(hObject, eventdata, handles)
+% テキストボックスの文字列を取得しdouble型に変換
+val = str2double(get(hObject,'String'));
+
+% 数値をハンドル構造体に格納
+handles.ws = val;
+
+% ハンドル構造体の更新
+guidata(hObject, handles);
+
+
+%% REPLACE_WITH_DASH_DASH- テキストボックスの初期化
+function windowsize_CreateFcn(hObject, eventdata, handles)
+
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+%% REPLACE_WITH_DASH_DASH- ポップアップメニューのコールバック
+function fmax_Callback(hObject, eventdata, handles)
+% ポップアップメニュー上の文字列とそれに対応した値を取得
+str = get(hObject,'String');
+val = get(hObject,'Value');
+
+% 選択した項目に応じてハンドルに値を返す
+switch str{val};
+    case '1'
+        handles.fmaxvalue = 1;
+    case '2'
+        handles.fmaxvalue = 2;
+    case '3'
+        handles.fmaxvalue = 3;
+    case '4'
+        handles.fmaxvalue = 4;
+end
+
+% ハンドル構造体の更新
+guidata(hObject, handles);
+
+
+%% REPLACE_WITH_DASH_DASH- ポップアップメニューの初期化
+function fmax_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+%% REPLACE_WITH_DASH_DASH- mwsnvボタンのコールバック
+function mwsnv_Callback(hObject, eventdata, handles)
+% mwsnvアルゴリズムの実行
+
+% ハンドル構造体から計算に必要な各種値を代入
+x = handles.spec;
+y = handles.refferncevalue;
+fmax = handles.fmaxvalue;
+w = handles.wave;
+ws = handles.ws;
+
+% MWSNVアルゴリズムの実行
+[SSR]=mwsnv4gui(x,y,fmax,w,ws);
+
+% axesハンドルをhandles.result_axesに指定しWMSNVアルゴリズムの結果をプロット
+axes(handles.result_axes);
+plot(w(1:end-ws+1),(SSR(2,:)),'m',w(1:end-ws+1),(SSR(1,:)),'r',w(1:end-ws+1),(SSR(end,:)),'b');
+
+% set(h_axes, 'PropertyName', Value)はaxesハンドル中の制御したい項目 (プロパティ) を設定する
+% 例えばx軸の範囲を変えたい場合はaxesハンドル中の'xlim'を設定する
+set(handles.result_axes,'YScale','log');
+axis(handles.result_axes,'tight');
+
+% 作成 xlabel
+xlabel(handles.result_axes, 'Window position/cm^-^1');
+
+% 作成 ylabel
+ylabel(handles.result_axes, 'SSR');
+%%
+##### SOURCE END #####
+--></body></html>

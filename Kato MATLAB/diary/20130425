@@ -1,0 +1,6 @@
+load('C:\Users\Genkawa\Documents\Kato\卒業論文\最終発表\データ\小麦粉-グルコース混合実験（混合物のみ）\kongou.mat')
+plot(W,Xraw);
+{関数または変数 'Xraw' が未定義です。
+} 
+plot(W,raw)
+X=raw;
